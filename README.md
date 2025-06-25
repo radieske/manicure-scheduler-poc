@@ -34,12 +34,18 @@ manicure-scheduler/
 │   ├── core/
 │   │   ├── application/              # Casos de uso (comandos e queries)
 │   │   └── domain/                   # Entidades e interfaces (DDD)
+│           └── appointments/
+│               ├── appointment.go             ← Entidade do domínio (pura)
+│               └── repository.go              ← Interface de repositório
 │   │
 │   └── infra/
-│       ├── dataprovider/
+│       ├── db/
 │       │   └── sql/
 │       │       └── pg/
 │       │           ├── gorm/         # Conexão GORM e repositórios
+│                       └── appointments/
+│                           ├── entity.go                  ← Struct GORM (tabela)
+│                           └── repository.go              ← Implementação da interface
 │       │           └── migrations/   # Scripts e versionamento do banco
 │       │
 │       └── webserver/
