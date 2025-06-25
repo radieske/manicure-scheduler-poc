@@ -2,6 +2,8 @@ module github.com/radieske/manicure-scheduler-poc
 
 go 1.23.3
 
+replace github.com/radieske/manicure-scheduler-poc => ./
+
 require (
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/google/uuid v1.6.0

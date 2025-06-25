@@ -1,7 +1,7 @@
 package appointmentdb
 
 import (
-	"github.com/radieske/manicure-scheduler-poc/internal/core/domain/appointment"
+	appointment "github.com/radieske/manicure-scheduler-poc/internal/core/domain/appointment"
 
 	"gorm.io/gorm"
 )
