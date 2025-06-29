@@ -16,9 +16,9 @@ func ConnectDB() *gorm.DB {
 
 	host := config.GetEnv("DB_HOST", "localhost")
 	port := config.GetEnv("DB_PORT", "5432")
-	user := config.GetEnv("DB_USER", "scheduler")
-	password := config.GetEnv("DB_PASS", "scheduler123")
-	dbname := config.GetEnv("DB_NAME", "schedulerdb")
+	user := config.GetEnv("DB_USER", "postgres")
+	password := config.GetEnv("DB_PASS", "postgres")
+	dbname := config.GetEnv("DB_NAME", "manicure_scheduler")
 
 	dsn := fmt.Sprintf(
 		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",

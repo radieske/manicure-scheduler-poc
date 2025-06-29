@@ -11,8 +11,8 @@ type AppointmentResponse struct {
 	Name        string    `json:"name"`
 	Phone       string    `json:"phone"`
 	Service     string    `json:"service"`
-	ScheduledAt time.Time `json:"scheduled_at"`
-	CreatedAt   time.Time `json:"created_at"`
+	ScheduledAt time.Time `json:"scheduledAt"`
+	CreatedAt   time.Time `json:"createdAt"`
 }
 
 func FromEntity(app appointment.Appointment) AppointmentResponse {

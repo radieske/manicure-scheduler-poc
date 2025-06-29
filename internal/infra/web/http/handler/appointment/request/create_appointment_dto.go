@@ -10,7 +10,7 @@ type CreateAppointmentDTO struct {
 	Name        string    `json:"name"`
 	Phone       string    `json:"phone"`
 	Service     string    `json:"service"`
-	ScheduledAt time.Time `json:"scheduled_at"`
+	ScheduledAt time.Time `json:"scheduledAt"`
 }
 
 func (dto CreateAppointmentDTO) ToInput() create_appointments.CreateAppointmentInput {
