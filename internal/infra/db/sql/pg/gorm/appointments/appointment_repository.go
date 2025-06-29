@@ -1,20 +1,28 @@
 package appointmentdb
 
 import (
-	appointment "github.com/radieske/manicure-scheduler-poc/internal/core/domain/appointment"
+	"context"
 
+	"github.com/radieske/manicure-scheduler-poc/internal/core/domain/appointment"
 	"gorm.io/gorm"
 )
 
 type Repository struct {
-	db *gorm.DB
+	ctx context.Context
+	db  *gorm.DB
 }
 
-func NewRepository(db *gorm.DB) *Repository {
-	return &Repository{db: db}
+func NewRepository(
+	ctx context.Context,
+	db *gorm.DB,
+) *Repository {
+	return &Repository{
+		ctx: ctx,
+		db:  db,
+	}
 }
 
-func (r *Repository) Create(a appointment.Appointment) error {
+func (r *Repository) Create(ctx context.Context, a appointment.Appointment) error {
 	entity := AppointmentEntity{
 		ID:          a.ID,
 		Name:        a.Name,
@@ -23,12 +31,12 @@ func (r *Repository) Create(a appointment.Appointment) error {
 		ScheduledAt: a.ScheduledAt,
 		CreatedAt:   a.CreatedAt,
 	}
-	return r.db.Create(&entity).Error
+	return r.db.WithContext(ctx).Create(&entity).Error
 }
 
-func (r *Repository) FindByPhone(phone string) ([]appointment.Appointment, error) {
+func (r *Repository) FindByPhone(ctx context.Context, phone string) ([]appointment.Appointment, error) {
 	var entities []AppointmentEntity
-	if err := r.db.Where("phone = ?", phone).Find(&entities).Error; err != nil {
+	if err := r.db.WithContext(ctx).Where("phone = ?", phone).Find(&entities).Error; err != nil {
 		return nil, err
 	}
 
